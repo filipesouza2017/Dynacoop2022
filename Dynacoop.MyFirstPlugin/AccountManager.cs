@@ -10,28 +10,23 @@ using Microsoft.Xrm.Sdk.Messages;
 
 namespace Dynacoop.MyFirstPlugin
 {
-    public class AccountManager : IPlugin
+    public class AccountManager : PluginImplement
     {
-        public void Execute(IServiceProvider serviceProvider)
+        public override void ExecutePlugin(IServiceProvider serviceProvider)
         {
-            IPluginExecutionContext executionContext = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
-            IOrganizationServiceFactory serviceFactory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
-            IOrganizationService service = serviceFactory.CreateOrganizationService(executionContext.UserId);
-            ITracingService tracingService = (ITracingService)serviceProvider.GetService(typeof(ITracingService));
+            Entity conta = this.Context.Stage == 10 ? (Entity)this.Context.InputParameters["Target"] : (Entity)this.Context.PostEntityImages["PostImage"];
 
-            Entity conta = executionContext.Stage == 10 ? (Entity)executionContext.InputParameters["Target"] : (Entity)executionContext.PostEntityImages["PostImage"];
-            
             //10 = Pre-Validation
             //20 - Pre-Operation
             //30 - Post-Operation
 
-            if (executionContext.Stage == (int)SharedProject.Models.Enumerator.PluginStages.PreValidation)
+            if (this.Context.Stage == (int)SharedProject.Models.Enumerator.PluginStages.PreValidation)
             {
                 string cnpj = conta["dyp_cnpj"].ToString();
 
                 QueryExpression recuperarContaComCnpj = new QueryExpression("account");
                 recuperarContaComCnpj.Criteria.AddCondition("dyp_cnpj", ConditionOperator.Equal, cnpj);
-                EntityCollection contas = service.RetrieveMultiple(recuperarContaComCnpj);
+                EntityCollection contas = this.Service.RetrieveMultiple(recuperarContaComCnpj);
 
                 if (contas.Entities.Count() > 0)
                 {
@@ -42,7 +37,7 @@ namespace Dynacoop.MyFirstPlugin
             {
                 if ((bool)conta["dyp_convidarcontatos"])
                 {
-                    Contato contato = new Contato(service);
+                    Contato contato = new Contato(this.Service);
                     EntityCollection contatosDaConta =
                         contato.RecuperarContatosPorIdDaConta(
                             conta.Id,
@@ -74,7 +69,7 @@ namespace Dynacoop.MyFirstPlugin
                         executeMultipleRequest.Requests.Add(createRequest);
                     }
 
-                    ExecuteMultipleResponse multipleResponse = (ExecuteMultipleResponse)service.Execute(executeMultipleRequest);
+                    ExecuteMultipleResponse multipleResponse = (ExecuteMultipleResponse)this.Service.Execute(executeMultipleRequest);
 
                     foreach (var response in multipleResponse.Responses)
                     {

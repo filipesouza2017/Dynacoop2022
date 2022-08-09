@@ -123,6 +123,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountManager.cs" />
+    <Compile Include="ActionExample\ExampleCode.cs" />
+    <Compile Include="ContactManager.cs" />
+    <Compile Include="PluginImplement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,8 +9,9 @@
     <Import_RootNamespace>SharedProject1</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Contacs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Conta.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Contato.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ConviteDoEvento.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Enumerator.cs" />
   </ItemGroup>
 </Project>
