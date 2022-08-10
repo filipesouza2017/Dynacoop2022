@@ -124,7 +124,10 @@
   <ItemGroup>
     <Compile Include="AccountManager.cs" />
     <Compile Include="ActionExample\ExampleCode.cs" />
+    <Compile Include="ActionImplement.cs" />
     <Compile Include="ContactManager.cs" />
+    <Compile Include="MyActions\SomaOportunidadesDoCliente.cs" />
+    <Compile Include="MyActions\SomaOportunidadesDoClienteGanha.cs" />
     <Compile Include="PluginImplement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

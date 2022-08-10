@@ -13,5 +13,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Contato.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ConviteDoEvento.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Enumerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Oportunidade.cs" />
   </ItemGroup>
 </Project>
