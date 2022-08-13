@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynacoop.MyFirstPlugin", "D
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SharedProject1", "SharedProject1\SharedProject1.shproj", "{91EC088A-B9CD-4F1A-89C0-DC48F35C5AAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebResourcesLibrary", "WebResourcesLibrary\WebResourcesLibrary.csproj", "{A6FBD140-31A3-486B-B004-42AA8D0DD1B1}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		SharedProject1\SharedProject1.projitems*{4a33a4e2-30c4-4cb0-868e-785fb52ad818}*SharedItemsImports = 4
@@ -28,6 +30,10 @@ Global
 		{E146B5A4-A192-45AC-AF9F-75ED347E7BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E146B5A4-A192-45AC-AF9F-75ED347E7BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E146B5A4-A192-45AC-AF9F-75ED347E7BE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6FBD140-31A3-486B-B004-42AA8D0DD1B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6FBD140-31A3-486B-B004-42AA8D0DD1B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6FBD140-31A3-486B-B004-42AA8D0DD1B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6FBD140-31A3-486B-B004-42AA8D0DD1B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
