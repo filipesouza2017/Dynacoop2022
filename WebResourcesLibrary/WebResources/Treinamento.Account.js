@@ -55,6 +55,42 @@ Treinamento.Account = {
             }
         }
     },
+    RecalcularOportunidadeOnClick: function () {
+        Xrm.Utility.showProgressIndicator("Recalculando");
+
+        var execute_new_SomaOportunidadesDoCliente_Request = {
+            entity: { entityType: "account", id: Xrm.Page.data.entity.getId() },
+
+            getMetadata: function () {
+                return {
+                    boundParameter: "entity",
+                    parameterTypes: {
+                        entity: { typeName: "mscrm.account", structuralProperty: 5 }
+                    },
+                    operationType: 0, operationName: "new_SomaOportunidadesDoCliente"
+                };
+            }
+        };
+
+        Xrm.WebApi.online.execute(execute_new_SomaOportunidadesDoCliente_Request).then(
+            function success(response) {
+                if (response.ok) {
+                    Treinamento.Account.DynamicsAlert("As oportunidades foram recalculadas conforme o seu pedido", "Oportunidades Recalculada");
+                }
+
+                Xrm.Utility.closeProgressIndicator();
+            }
+        ).then(function (responseBody) {
+            var result = responseBody;
+            console.log(result);
+            // Return Type: mscrm.new_SomaOportunidadesDoClienteResponse
+            // Output Parameters
+            var sucesso = result["Sucesso"]; // Edm.Boolean
+        }).catch(function (error) {
+            Xrm.Utility.closeProgressIndicator();
+            console.log(error.message);
+        });
+    },
     DynamicsAlert: function (alertText, alertTitle) {
         var alertStrings = {
             confirmButtonLabel: "OK",
